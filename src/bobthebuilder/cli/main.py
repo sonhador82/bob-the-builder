@@ -17,6 +17,3 @@ def build_cli():
     bob.build(parsed.platform, parsed.arch)
     bob.bundle(parsed.out_dir, platform=parsed.platform, arch=parsed.arch, variant='debug')
 
-if __name__ == '__main__':
-    build_cli()
-
