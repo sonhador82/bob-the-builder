@@ -26,9 +26,10 @@ class BobBuilder:
             '--architectures', arch,
         ]
         exec_cmd = self.exec + self.common_args + args + [cmd]
+        logging.error(exec_cmd)
         result = self._exec_cmd(exec_cmd)
 
-    def bundle(self, output_dir: str, platform: str, arch: str, variant: str = 'release'):
+    def bundle(self, output_dir: str, platform: str, arch: str, variant):
         out_dir = str(pathlib.Path(output_dir).resolve())
         cmd = 'bundle'
         args = [ 
@@ -38,6 +39,7 @@ class BobBuilder:
             '--variant', variant
         ]
         exec_cmd = self.exec + self.common_args + args + [cmd]
+        logging.error(exec_cmd)
         result = self._exec_cmd(exec_cmd)
 
     def _exec_cmd(self, cmd) -> subprocess.CompletedProcess:
