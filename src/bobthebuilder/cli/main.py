@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from bobthebuilder.builder import BobBuilder
+from bobthebuilder import BobBuilder, IniModifier
 
 
 def build_cli():
@@ -17,3 +17,13 @@ def build_cli():
     bob.resolve_deps()
     bob.build(parsed.platform, parsed.arch)
     bob.bundle(parsed.out_dir, platform=parsed.platform, arch=parsed.arch, variant=parsed.variant)
+
+
+def set_version():
+    args = argparse.ArgumentParser(description='Tool for setting game version')
+    args.add_argument("-f", dest='game_project_file', help='game.project file', required=True)
+    args.add_argument('-v', dest='version', help='Game version, ex: 1.0.0', required=True)
+    parsed = args.parse_args()
+    ini = IniModifier(parsed.game_project_file)
+    ini.set('project', 'version', parsed.version)
+    ini.save()

@@ -2,6 +2,7 @@ import subprocess
 import logging
 import pathlib
 
+
 class BobBuilder:
     def __init__(self, project_dir: str) -> None:
         abs_path = str(pathlib.Path(project_dir).resolve())

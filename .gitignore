@@ -1,4 +1,6 @@
 venv
+.idea
+dist
 *.pyc
 *.egg-info*
 
