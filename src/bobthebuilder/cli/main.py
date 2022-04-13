@@ -15,7 +15,7 @@ def build_cli():
     project_dir = parsed.d if parsed.d else os.getcwd()
     bob = BobBuilder(project_dir)
     bob.resolve_deps()
-    bob.build(parsed.platform, parsed.arch)
+    bob.build(parsed.platform, parsed.arch, variant=parsed.variant)
     bob.bundle(parsed.out_dir, platform=parsed.platform, arch=parsed.arch, variant=parsed.variant)
 
 
